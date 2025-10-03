@@ -5,7 +5,6 @@ import connectDB from "./config/mongodb.js";
 import authRoutes from "./routes/auth.js";
 
 const app = express();
-const port = process.env.PORT || 4000;
 
 // connect db
 connectDB();
@@ -21,6 +20,6 @@ app.get("/", (req, res) => {
   res.send("API is working ✅");
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Server running on http://localhost:${port}`);
-});
+// ❌ remove app.listen()
+// ✅ instead export app for Vercel
+export default app;
